@@ -17,7 +17,7 @@ O script é modularizado, permitindo que o usuário escolha o nível de manuten�
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="img/terminal_code.png" width="45%" />
+  <img src="img/terminal_code.png" width="70%" />
 </div>
 
 ## 🛠️ Tecnologias Aplicadas
