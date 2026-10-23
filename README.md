@@ -1,6 +1,6 @@
 # ExysClean - Otimização de Sistema  ☘️
 
-![Versão](https://img.shields.io/badge/version-2.1-green)
+![Versão](https://img.shields.io/badge/version-2.2-green)
 ![Linguagem](https://img.shields.io/badge/language-Batch-blue)
 
 O **ExysClean** é um script batch leve e sem dependências, desenvolvido para otimizar o Windows, realizar manutenção preventiva e corrigir erros. O projeto foi criado para facilitar o dia a dia de profissionais de suporte e de usuários que desejam manter o sistema limpo e rápido sem instalar softwares de terceiros.
