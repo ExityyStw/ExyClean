@@ -13,15 +13,15 @@ if %errorLevel% neq 0 (
 :menu
 cls
 echo ======================================================
-echo           ExysClean - By Exityy ☘️
+echo            ExysClean - By Exityy ☘️
 echo ======================================================
 echo.
-echo [1] ⚡ Limpeza de Sistema   -   (Cache, Update e Temp) 
-echo [2] 🛡️ Reparar Windows      -   (WinSxS, DISM e SFC) 
-echo [3] 💾 Otimização de Disco  -   (SysMain e CHKDSK) 
-echo [4] 🚀 Otimização Avançada  -   (Energia e IA)
-echo [5] 🌐 Reparar Rede         -   (Reset TCP/IP e Winsock)
-echo [6] ✨ Executar TUDO        -   (Reinicia em 60s)
+echo [1] ⚡ Limpeza de Sistema   -  (Cache, Update e Temp) 
+echo [2] 🛡️ Reparar Windows      -  (WinSxS, DISM e SFC) 
+echo [3] 💾 Otimização de Disco  -  (SysMain e CHKDSK) 
+echo [4] 🚀 Otimização Avançada  -  (Energia e IA)
+echo [5] 🌐 Reparar Rede         -  (Reset TCP/IP e Winsock)
+echo [6] ✨ Executar TUDO        -  (Reinicia em 60s)
 echo [7] ❌ Sair
 echo.
 set "opcao="
@@ -117,7 +117,7 @@ if /i "%tipo_disco%"=="N" (
     echo ⏭️ SysMain mantido ativado - Recomendado para SSDs para gestão de memória.
 )
 
-echo 💾 Agendando CHKDSK para o próximo arranque...
+echo 💾 Agendando CHKDSK para o próximo boot...
 echo s | chkdsk %systemdrive% /f >nul 2>&1
 echo y | chkdsk %systemdrive% /f >nul 2>&1
 
