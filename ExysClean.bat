@@ -4,11 +4,9 @@ chcp 65001 >nul
 title ExysClean - Otimização de Sistema ☘️
 
 net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo [ERRO] Execute como Administrador! ❌
-    pause
-    exit
-)
+if %errorLevel% == 0 goto menu
+mshta vbscript:msgbox("O ExysClean precisa ser executado como Administrador! Clique com o botao direito e selecione 'Executar como Administrador'.",16,"ExysClean - Falta de permissão.")(window.close)
+exit
 
 :menu
 cls
@@ -24,16 +22,15 @@ echo [5] 🌐 Reparar Rede         -  (Reset TCP/IP e Winsock)
 echo [6] ✨ Executar TUDO        -  (Reinicia em 60s)
 echo [7] ❌ Sair
 echo.
-set "opcao="
-set /p opcao="Escolha uma opção (1-7): "
+choice /c 1234567 /n /m "Escolha uma opção (1-7): "
 
-if "%opcao%"=="1" goto call_limpeza
-if "%opcao%"=="2" goto call_reparar
-if "%opcao%"=="3" goto call_disco
-if "%opcao%"=="4" goto call_avancada
-if "%opcao%"=="5" goto call_rede
-if "%opcao%"=="6" goto completo
-if "%opcao%"=="7" goto :eof
+if errorlevel 7 goto :eof
+if errorlevel 6 goto completo
+if errorlevel 5 goto call_rede
+if errorlevel 4 goto call_avancada
+if errorlevel 3 goto call_disco
+if errorlevel 2 goto call_reparar
+if errorlevel 1 goto call_limpeza
 goto menu
 
 :call_limpeza
@@ -73,7 +70,7 @@ echo 🔄 Limpando Cache do Windows Update...
 net stop wuauserv /y >nul 2>&1
 net stop bits /y >nul 2>&1
 net stop dosvc /y >nul 2>&1
-timeout /t 2 /nobreak >nul
+timeout /t 5 /nobreak >nul
 del /s /q /f "%WINDIR%\SoftwareDistribution\Download\*.*" >nul 2>&1
 net start wuauserv >nul 2>&1
 net start bits >nul 2>&1
@@ -108,8 +105,8 @@ goto :eof
 :disco
 echo.
 echo ⚙️ Otimização de Disco
-set /p tipo_disco="Usa um SSD como disco principal? (S/N): "
-if /i "%tipo_disco%"=="N" (
+choice /c SN /n /t 10 /d S /m "Usa um SSD como disco principal? (S/N) [Padrão: S em 10s]: "
+if errorlevel 2 (
     echo ⚙️ Parando e Desativando SysMain - Recomendado para HDD para reduzir uso de 100%%...
     net stop SysMain /y >nul 2>&1
     sc config SysMain start= disabled >nul 2>&1
@@ -118,8 +115,7 @@ if /i "%tipo_disco%"=="N" (
 )
 
 echo 💾 Agendando CHKDSK para o próximo boot...
-echo s | chkdsk %systemdrive% /f >nul 2>&1
-echo y | chkdsk %systemdrive% /f >nul 2>&1
+(echo S & echo Y) | chkdsk %systemdrive% /f >nul 2>&1
 
 echo ✅ Otimização de disco configurada!
 goto :eof
@@ -129,9 +125,9 @@ echo.
 echo ⚡ Configurando Plano de Energia...
 echo ⚠️ AVISO: Caso o seu computador seja um portatil/laptop, o plano de "Desempenho Maximo" 
 echo pode reduzir drasticamente a autonomia da bateria e gerar aquecimento.
-set /p aplica_energia="Deseja aplicar este plano mesmo assim? (S/N): "
+choice /c SN /n /t 10 /d N /m "Deseja aplicar este plano mesmo assim? (S/N) [Padrão: N em 10s]: "
 
-if /i "%aplica_energia%"=="N" (
+if errorlevel 2 (
     echo ⏭️ Alteracao de plano de energia ignorada.
     goto pular_energia
 )
@@ -166,8 +162,8 @@ goto :eof
 echo.
 echo ⚠️ ATENÇÃO: Esta ação vai repor todas as configurações de rede.
 echo Pode desconectar VPNs em curso ou apagar configurações de IP estático.
-set /p confirma_rede="Deseja continuar? (S/N): "
-if /i "%confirma_rede%"=="N" (
+choice /c SN /n /t 10 /d N /m "Deseja continuar? (S/N): [Padrão: N em 10s]: "
+if errorlevel 2 (
     echo ❌ Reposição de rede cancelada.
     goto :eof
 )
