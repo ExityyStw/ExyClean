@@ -5,7 +5,7 @@
 
 O **ExysClean** é um script batch leve e sem dependências, desenvolvido para otimizar o Windows, realizar manutenção preventiva e corrigir erros. O projeto foi criado para facilitar o dia a dia de profissionais de suporte e de usuários que desejam manter o sistema limpo e rápido sem instalar softwares de terceiros.
 
-## — Funcionalidades 🖥️
+## — Funcionalidades. 🖥️
 
 O script é dividido em módulos interativos. Escolha o que seu sistema precisa no momento:
 
@@ -21,7 +21,7 @@ O script é dividido em módulos interativos. Escolha o que seu sistema precisa 
   <img src="img/code.png" width="95%" />
 </div>
 
-## — Detalhes Técnicos e Diferenciais ⚙️
+## — Detalhes Técnicos e Diferenciais. ⚙️
 
 A versão 2.0 foi reescrita para ser mais segura e compatível com qualquer máquina:
 
@@ -30,7 +30,7 @@ A versão 2.0 foi reescrita para ser mais segura e compatível com qualquer máq
 - **Safe-Execution:** Verifica automaticamente se o script tem privilégios de administrador no momento da execução.
 - **Codificação UTF-8:** O uso de `chcp 65001` garante que caracteres especiais e emojis sejam exibidos corretamente em qualquer terminal.
 
-## 🛠️ Tecnologias Aplicadas
+## — Tecnologias Aplicadas. 👾
 
 * **Batch Script:** Linguagem nativa para automação Windows.
 * **Modularização:** Uso de `labels` e `call` para reuso de código e controle de fluxo.
